@@ -93,7 +93,6 @@
     CGContextScaleCTM(context, 1.0, -1.0);
     CGContextTranslateCTM( context, -0.5f * width, -0.5f * height ) ;
     
-
     
     [layer renderInContext:context];
     CGImageRef graphicOutputImage = CGBitmapContextCreateImage(context);
