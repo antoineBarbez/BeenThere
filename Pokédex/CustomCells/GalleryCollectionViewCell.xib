@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15G18013" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="galleryCell" id="xNz-Cs-FO6" customClass="GalleryCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H3j-0H-cpE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    </scrollView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="H3j-0H-cpE" secondAttribute="bottom" id="6xn-pg-ygg"/>
+                <constraint firstItem="H3j-0H-cpE" firstAttribute="leading" secondItem="xNz-Cs-FO6" secondAttribute="leading" id="TB6-Jh-oLP"/>
+                <constraint firstAttribute="trailing" secondItem="H3j-0H-cpE" secondAttribute="trailing" id="bsH-Tr-Hcm"/>
+                <constraint firstItem="H3j-0H-cpE" firstAttribute="top" secondItem="xNz-Cs-FO6" secondAttribute="top" id="mJ5-RM-gby"/>
+            </constraints>
+            <connections>
+                <outlet property="scrollView" destination="H3j-0H-cpE" id="pwM-Bo-0Tz"/>
+            </connections>
+            <point key="canvasLocation" x="59.5" y="50.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MLPAutoCompleteTextFieldDataSource.h"
+#import "FilesManager.h"
 
-@interface CountryDataSource : NSObject
-
+@interface CountryDataSource : NSObject <MLPAutoCompleteTextFieldDataSource>
+    @property (strong, nonatomic) FilesManager *flmgr;
 @end

@@ -10,4 +10,7 @@
 
 @interface MyTextField : UITextField
 
+@property (strong, nonatomic) NSString *defaultText;
+
+-(id)initWithDefaultText:(NSString *) text;
 @end
