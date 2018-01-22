@@ -27,12 +27,10 @@
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) UIView *interItemSpacingView;
 @property (strong, nonatomic) UIButton *playButton;
+@property (strong, nonatomic) IBOutlet UIView *toolbarContainerView;
 @property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *toolbarBottomConstraint;
-@property (strong, nonatomic) UIBarButtonItem *toolbarTrashButton;
 @property (strong, nonatomic) UIBarButtonItem *toolbarPlayPauseButton;
-//@property (strong, nonatomic) IBOutlet UISlider *slider;
-//@property (strong, nonatomic) IBOutlet VideoSlider *videoSlider;
 @property (strong, nonatomic) IBOutlet VideoSlider *slider;
 
 @property (strong, nonatomic) NSArray *medias;
@@ -44,6 +42,7 @@
 @property (strong, nonatomic) UITapGestureRecognizer *doubleTapGestureRecognizer;
 @property (weak, nonatomic) id playbackObserver;
 
+- (IBAction)toolbarTrashButton:(id)sender;
 
 - (NSInteger) getCurrentIndex;
 

@@ -14,6 +14,7 @@
 		CC2732D91F24F6EC00CF0732 /* ImageOpeningPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2732D81F24F6EC00CF0732 /* ImageOpeningPresenter.m */; };
 		CC2732DC1F24F70900CF0732 /* ImageOpeningDismisser.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2732DB1F24F70900CF0732 /* ImageOpeningDismisser.m */; };
 		CC402E911E2830D500555291 /* CountryView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC402E901E2830D500555291 /* CountryView.m */; };
+		CC56BFED2015672B007E64E0 /* test1.png in Resources */ = {isa = PBXBuildFile; fileRef = CC56BFEC2015672A007E64E0 /* test1.png */; };
 		CC5CA8FD1F31512200657350 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5CA8FC1F31512200657350 /* CollectionViewCell.m */; };
 		CC5CA9051F32921700657350 /* VideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC5CA9041F32921700657350 /* VideoPlayerView.m */; };
 		CC5CA9091F34240400657350 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = CC5CA9081F34240400657350 /* play.png */; };
@@ -465,6 +466,7 @@
 		CC2732DB1F24F70900CF0732 /* ImageOpeningDismisser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageOpeningDismisser.m; sourceTree = "<group>"; };
 		CC402E8F1E2830D500555291 /* CountryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryView.h; sourceTree = "<group>"; };
 		CC402E901E2830D500555291 /* CountryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryView.m; sourceTree = "<group>"; };
+		CC56BFEC2015672A007E64E0 /* test1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test1.png; sourceTree = "<group>"; };
 		CC5CA8FB1F31512200657350 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		CC5CA8FC1F31512200657350 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		CC5CA9031F32921700657350 /* VideoPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayerView.h; sourceTree = "<group>"; };
@@ -1507,6 +1509,7 @@
 		CCF5E3781EEF32E0006B92A6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CC56BFEC2015672A007E64E0 /* test1.png */,
 				CC5CA9121F37E9DD00657350 /* play-button.png */,
 				CCE5491C1F6210DD00BF32F6 /* add.png */,
 				CC5CA90A1F34245800657350 /* pause.png */,
@@ -1720,6 +1723,7 @@
 				CCF5E2FB1EE96984006B92A6 /* East-Timor.svg in Resources */,
 				CCDD2FB51E034BDD004BF54E /* India.png in Resources */,
 				CCDD2FD41E034BDD004BF54E /* Malaysia.png in Resources */,
+				CC56BFED2015672B007E64E0 /* test1.png in Resources */,
 				CCF5E3691EE96984006B92A6 /* United-Kingdom.svg in Resources */,
 				CCF5E3191EE96984006B92A6 /* Italy.svg in Resources */,
 				CCDD30281E034BDE004BF54E /* Sudan.png in Resources */,

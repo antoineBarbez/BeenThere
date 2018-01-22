@@ -101,23 +101,23 @@
 }
 
 -(void) setupToolbar {
-    UIButton *trashButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    trashButton.frame = CGRectMake(0, 0, 30, 30);
-    [trashButton setBackgroundImage:[UIImage imageNamed:@"delete_blue.png"] forState:UIControlStateNormal];
-    [trashButton addTarget:self action:@selector(deleteCurrentMedia:) forControlEvents:UIControlEventTouchUpInside];
-    
     UIButton *playPauseButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    playPauseButton.frame = CGRectMake(0, 0, 25, 25);
     [playPauseButton setBackgroundImage:[UIImage imageNamed:@"pause.png"] forState:UIControlStateSelected];
     [playPauseButton setBackgroundImage:[UIImage imageNamed:@"play.png"] forState:UIControlStateNormal];
     [playPauseButton addTarget:self action:@selector(playButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     playPauseButton.hidden = YES;
-    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
-    
-    self.toolbarTrashButton = [[UIBarButtonItem alloc] initWithCustomView:trashButton];
     self.toolbarPlayPauseButton = [[UIBarButtonItem alloc] initWithCustomView:playPauseButton];
-    [self.toolbar setItems:@[self.toolbarPlayPauseButton, flexibleSpace, self.toolbarTrashButton] animated:NO];
+    [self.toolbarPlayPauseButton.customView.widthAnchor constraintEqualToConstant:25 ].active = YES;
+    [self.toolbarPlayPauseButton.customView.heightAnchor constraintEqualToConstant:25 ].active = YES;
+    
+    NSArray *arrayOfButtons = self.toolbar.items;
+    [self.toolbar setItems:@[[arrayOfButtons objectAtIndex:0],
+                             self.toolbarPlayPauseButton,
+                             [arrayOfButtons objectAtIndex:2],
+                             [arrayOfButtons objectAtIndex:3],
+                             [arrayOfButtons objectAtIndex:4]] animated:NO];
+    
 }
 
 -(void)setupSubviews {
@@ -169,13 +169,11 @@
                                          self.navigationController.navigationBar.frame.size.height);
     
     [self.view removeConstraint:self.toolbarBottomConstraint];
-    CGFloat constant = (self.toolbar.frame.size.height + self.slider.frame.size.height);
-    self.toolbarBottomConstraint = [NSLayoutConstraint constraintWithItem:self.view
-                                                                attribute:NSLayoutAttributeBottom
-                                                                relatedBy:0 toItem:self.toolbar
-                                                                attribute:NSLayoutAttributeBottom
-                                                               multiplier:1
-                                                                 constant:-constant];
+    
+    CGFloat constant = (self.toolbarContainerView.frame.size.height + self.slider.frame.size.height);
+    
+    self.toolbarBottomConstraint = [self.toolbarContainerView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor constant:constant];
+    
     [self.view addConstraint:self.toolbarBottomConstraint];
     
     [UIView animateWithDuration:0.16
@@ -206,12 +204,16 @@
     
     
     [self.view removeConstraint:self.toolbarBottomConstraint];
-    self.toolbarBottomConstraint = [NSLayoutConstraint constraintWithItem:self.view
-                                                                attribute:NSLayoutAttributeBottom
-                                                                relatedBy:0 toItem:self.toolbar
-                                                                attribute:NSLayoutAttributeBottom
-                                                               multiplier:1
-                                                                 constant:0.0];
+    
+    NSLayoutAnchor *bottomAnchor;
+    if (@available(iOS 11.0, *)) {
+        bottomAnchor = self.view.safeAreaLayoutGuide.bottomAnchor;
+    } else {
+        // Fallback on earlier versions
+        bottomAnchor = self.view.bottomAnchor;
+    }
+    self.toolbarBottomConstraint = [self.toolbarContainerView.bottomAnchor constraintEqualToAnchor:bottomAnchor constant:44];
+    
     [self.view addConstraint:self.toolbarBottomConstraint];
     
     self.toolbar.hidden = NO;
@@ -368,6 +370,7 @@
 }
 
 // Calculate the index of the item that the collectionView is currently displaying
+
 - (NSInteger) getCurrentIndex {
     CGPoint currentOffset = [self.collectionView contentOffset];
     NSInteger currentIndex = currentOffset.x / self.collectionView.frame.size.width;
@@ -388,7 +391,7 @@
     if (!currentCell.mediaIsAnImage) {
         VideoPlayerView *playerView = (VideoPlayerView *)currentCell.mediaView;
         
-        //the button clicked is the big play button ton start the video
+        //the button clicked is the big play button to start the video
         if(sender.tag == 111) {
             sender.hidden = YES;
             [self hideBars];
@@ -441,7 +444,7 @@
     }];
 }
 
-- (void)deleteCurrentMedia:(UIButton*)sender {
+- (IBAction)toolbarTrashButton:(id)sender {
     self.currentIndex = [self getCurrentIndex];
     NSDictionary *media = [self.medias objectAtIndex:self.currentIndex];
     NSString *mediaType = (NSString *)[media objectForKey:@"mediaType"];
@@ -452,9 +455,9 @@
     
     UIAlertAction* deleteAction = [UIAlertAction actionWithTitle:[NSString stringWithFormat:@"Supprimer la %@",mediaType]
                                                            style:UIAlertActionStyleDestructive
-                                                          handler:^(UIAlertAction * action) {
-                                                              [self deleteCurrentMediaWithAnimation];
-                                                          }];
+                                                         handler:^(UIAlertAction * action) {
+                                                             [self deleteCurrentMediaWithAnimation];
+                                                         }];
     
     
     UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Annuler"
@@ -590,6 +593,5 @@
         return nil;
     }
 }
-
 
 @end
